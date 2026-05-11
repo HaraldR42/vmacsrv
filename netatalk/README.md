@@ -2,21 +2,20 @@
 
 **Important: Use this as a inspiration or starting point for your own setup. Adapt to your specific setup. YMMV**
 
-For file service and AppleTalk (Ethernet) routing [netatalk](https://netatalk.io) is used.
+For file service and AppleTalk (Ethernet) routing, [Netatalk](https://netatalk.io) is used.
 
-AFP file service works **both** over AppleTalk and TCP/IP!
+AFP file service works **both** over AppleTalk and IP!
 
-*Hint: Do not use netatalk 3.x because there AppleTalk was removed. The project re-introduced it in version 4.x! This container uses 4.x .*
+*Hint: Do not use Netatalk 3.x because AppleTalk support was removed; the project reintroduced it in version 4.x. This container uses Netatalk 4.x.*
 
 ## Building the image
-For example by:
+For example:
 ```
 docker build -t vmacsrv-netatalk:latest .
 ```
 ## Configuration
 
-EtherTalk routing is configured in [config/atalkd.conf](config/atalkd.conf)<BR/>
-File service are configured in [config/afp.conf](config/afp.conf) <BR/>
+EtherTalk routing is configured in [config/atalkd.conf](config/atalkd.conf). File services are configured in [config/afp.conf](config/afp.conf).
 The docker script creates a user with:
 - Login: afpuser
 - Password: afpuser
@@ -30,7 +29,7 @@ You might change these defaults by environment variables when starting the conta
 - `AFP_GID`
 
 ## Running the image
-For example by:
+For example:
 ```
 docker run  --detach \
             --restart always \

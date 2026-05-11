@@ -8,7 +8,7 @@ The docker image just provides a minimal setup for forwarding/masquerading.
 See also [networking.md](../networking.md)
 
 ## Building the image
-For example by:
+For example:
 ```
 docker build -t vmacsrv-ip-router .
 ```
@@ -24,7 +24,7 @@ ETHOUDP_IF=${ETHOUDP_IF:-ethoudp_tap}
 XXX
 
 ## Running the image
-For example by:
+For example:
 ```
 docker run  --detach \
             --restart always \

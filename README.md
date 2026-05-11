@@ -1,6 +1,6 @@
 # Vintage Mac Server
 
-**IMPORTANT: This is not meant as "ready to deploy and run" project. The purpose is to give some hints, how a compact communication server for vintage Macs (pysical and virtual) could look like.**
+**IMPORTANT: This is not meant as a "ready to deploy and run" project. The purpose is to give some hints about how a compact communication server for vintage Macs (physical and virtual) could look.**
 
 ## Features
 
@@ -36,13 +36,13 @@ Currently all untested. A Mac SE and a Mac IIci are waiting to be recaped.
 The current setup uses:
 - Physical or virtual machine (mine is running on a [Proxmox](https://www.proxmox.com/) server)
 - Two separate Ethernet connections
-    - should be separated broadcast domains
+    - should be separate broadcast domains
     - can be real network cards or VLANs on the same physical network
 - Debian Trixie
-    - no GUI istalled
+    - no GUI installed
     - Docker installed
 
-Using docker here is totally debatable here, especially as there are so many priviledges needed for the containers. It's just my personal preference for keeping dependencies separate between different applications. 
+Using Docker here is debatable, especially because the containers require many privileges. It's just my personal preference for keeping dependencies separate between applications.
 
 ## Networks
 The setup features 4 networks: 

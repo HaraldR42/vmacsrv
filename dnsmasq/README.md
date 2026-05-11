@@ -7,17 +7,17 @@ For DNS and DHCP [dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html) is used.
 To avoid any interference with an existing LAN setup, DNS and especially DHCP is only active on `vintagelan` and `ethoutp`.
 
 ## Building the image
-For example by:
+For example:
 ```
 docker build -t vmacsrv-dnsmasq:latest .
 ```
 ## Configuration
 
-Both DNS and DHCP are configured in [config/dnsmasq.conf](config/dnsmasq.conf)<BR/>
-The DNS zone data is in [config/dnsmasq.hosts](config/dnsmasq.hosts)
+Both DNS and DHCP are configured in [config/dnsmasq.conf](config/dnsmasq.conf).
+The DNS zone data is in [config/dnsmasq.hosts](config/dnsmasq.hosts).
 
 ## Running the image
-For example by:
+For example:
 ```
 docker run  --detach \
             --restart always \

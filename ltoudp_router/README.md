@@ -2,13 +2,13 @@
 
 **Important: Use this as a inspiration or starting point for your own setup. Adapt to your specific setup. YMMV**
 
-For LocalTalk to EtherTalk routing [TashRouter](https://github.com/lampmerchant/tashrouter/tree/main) is used.
+For LocalTalk-to-EtherTalk routing [TashRouter](https://github.com/lampmerchant/tashrouter/tree/main) is used.
 
-On the LocalTalk side, currently only [LocalTalk over UDP](https://web.archive.org/web/20260102054321/https://windswept.home.blog/2019/12/10/localtalk-over-udp/) is supported.<br>
-Please see [TashRouter](https://github.com/lampmerchant/tashrouter/tree/main) how to adapt the python script [XXX](XXX) accordingly to support [TashTalk](https://github.com/lampmerchant/tashtalk).
+On the LocalTalk side, currently only [LocalTalk over UDP](https://web.archive.org/web/20260102054321/https://windswept.home.blog/2019/12/10/localtalk-over-udp/) is supported.
+Please see [TashRouter](https://github.com/lampmerchant/tashrouter/tree/main) for how to adapt the Python script to support [TashTalk](https://github.com/lampmerchant/tashtalk).
 
 ## Building the image
-For example by:
+For example:
 ```
 docker build -t vmacsrv-ltoudp-rt:latest .
 ```
@@ -25,14 +25,13 @@ options:
   --ltoudp-net VALUE   LToUDP seed network number [env: LTOUDP_NET] (default: 62)
 
 
-EtherTalk routing is configured in [config/atalkd.conf](config/atalkd.conf)<BR/>
-File service are configured in [config/afp.conf](config/afp.conf) <BR/>
+EtherTalk routing is configured in [config/atalkd.conf](config/atalkd.conf). File services are configured in [config/afp.conf](config/afp.conf).
 The docker script creates a user with:
 - Login: afpuser
 - Password: afpuser
 - UID/GID: 9999/9999
 
-You might change these defaults by environment variables when starting the container: 
+You can change these defaults by setting environment variables when starting the container:
 - `AFP_USER`
 - `AFP_PASS`
 - `AFP_UID`
@@ -47,7 +46,7 @@ XXXX
   --ltoudp-net VALUE   LToUDP seed network number [env: LTOUDP_NET] (default: 62)
 
 ## Running the image
-For example by:
+For example:
 ```
 docker run  --detach \
             --restart always \
