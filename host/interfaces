@@ -1,0 +1,73 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+#-----------------------------------------------------------------------------
+
+rename ens18=lan
+rename ens19=vintagelan
+
+#-----------------------------------------------------------------------------
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+#-----------------------------------------------------------------------------
+
+# The primary lan interface
+allow-hotplug lan
+auto lan
+iface lan inet static
+    address 172.29.0.33
+    netmask 255.255.255.0
+    gateway 172.29.0.1
+    dns-domain macgeek.home
+    dns-nameservers 127.0.0.1
+
+#-----------------------------------------------------------------------------
+
+# TAP interface for ethernetOverUDP
+# This MUST be standalone, do not bind to any bridge
+auto ethoudp_tap
+iface ethoudp_tap inet static
+    pre-up tunctl -t ethoudp_tap -u root
+    up ip link set dev ethoudp_tap up
+    down ip link set dev ethoudp_tap down
+    address 172.29.61.1
+    netmask 255.255.255.0
+
+#-----------------------------------------------------------------------------
+
+# The vintage net interface
+allow-hotplug vintagelan
+auto vintagelan
+iface vintagelan inet manual
+    up ip link set dev vintagelan up
+
+# TAP interface for LocalTalkOverUDP  router
+auto ltoudp_tap
+iface ltoudp_tap inet manual
+    pre-up tunctl -t ltoudp_tap -u root
+    up ip link set dev ltoudp_tap up
+    down ip link set dev ltoudp_tap down
+
+# veth pair for host interface
+auto vintagehost_br
+iface vintagehost_br inet manual
+    pre-up ip link add vintagehost_br type veth peer name vintagehost_if
+    up ip link set vintagehost_br up
+    down ip link del vintagehost_br
+auto vintagehost_if
+iface vintagehost_if inet static
+    address 172.29.60.1
+    netmask 255.255.255.0
+
+# Vintage net bridge that binds all togesther
+auto vintage_br
+iface vintage_br inet manual
+    bridge_ports vintagelan vintagehost_br ltoudp_tap
+    bridge_stp off
+    bridge_maxwait 5
+    

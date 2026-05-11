@@ -1,0 +1,10 @@
+# /etc/dnsmasq.hosts
+# Static DNS entries for vintage.macgeek.home
+# Format: <IP>  <fqdn>  [<short alias> ...]
+#
+# This file is referenced by addn-hosts= in dnsmasq.conf.
+# Reload with: systemctl reload dnsmasq  (or  kill -HUP <pid>)
+
+172.29.60.1    gateway.vintage.macgeek.home   gateway
+172.29.60.1    vmacsrv.vintage.macgeek.home   vmacsrv
+172.29.61.1    gw-ethoudp.vintage.macgeek.home   gw-ethoudp
