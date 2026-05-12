@@ -7,10 +7,22 @@
 - LocalTalk
 - EtherTalk
 - AppleTalk routing
-- TCP/IP routing and masquerading
-- File server (netatalk)
-- DNS (dnsmasq)
-- DHCP (dnsmasq)
+- IP routing and masquerading
+- AFP file server
+- DNS
+- DHCP
+
+### Networking
+
+This machine sits at the intersection of four independent networks. Together they enable modern infrastructure, legacy hardware connectivity, and tunnelled virtual networking to coexist on a single host.
+
+The setup features 4 networks: 
+- Two of them with real interfaces: These exist because I wanted to have the possibility to separate the vintage Mac traffic (which stems from the time where networks used to be innocent) from today's ordinary LAN traffic.
+- Two overlay/tunnel networks.
+
+Bridging and routing services are provided. See [networking](networking.md) and [host subdir](host/) for more details
+
+
 
 ---
 ## Supported emulators
@@ -20,7 +32,7 @@ All emulators were run on MacBook Neo, MacOS Tahoe 26.4.1. Host connectivity was
 | Emulator    | Tested  | System | Net SW | Connection | Via |
 |-------------|---------|--------|--------|------------|-----|
 | Mini vMac   | &#9989; | 6.0.7 | Classic | LocalTalk | ltoudp |
-| Basilisk II | &#9989; | 7.5.5 | OpenTransport 1.3 | EtherTalk+TCP/IP | ethoutp |
+| Basilisk II | &#9989; | 7.5.5 | OpenTransport 1.3 | EtherTalk+TCP/IP | ethoudp |
 
 SheepShaver should work similar to Basilisk II but is currently untested.
 
@@ -42,21 +54,14 @@ The current setup uses:
     - no GUI installed
     - Docker installed
 
-Using Docker here is debatable, especially because the containers require many privileges. It's just my personal preference for keeping dependencies separate between applications.
+Using Docker here is debatable, especially because the containers require many privileges.
+It's just my personal preference for keeping dependencies separate between applications.
+So YMMV.
 
-## Networks
-The setup features 4 networks: 
-- Two of them with real interfaces: These exist because I wanted to have the possibility to separate the vintage Mac traffic (which stems from the time where networks used to be innocent) from today's ordinary LAN traffic.
-- Two overlay/tunnel networks.
-
-In greater detail:
-
-| Interface    | Transport                         | Description                                  |
-|--------------|-----------------------------------|----------------------------------------------|
-| `lan`        | Ethernet                          | The ordinary LAN.                            |
-| `vintagelan` | Ethernet                          | Local network for physical vintage machines. |
-| `ethoutp`    | Ethernet frames over UDP broadbast  | SheepShaver / Basilisk II VMs using udptunnel| 
-| `ltoudp`     | LocalTalk over UDP multicast        | LocalTalk over UDP                           |
-
-See [host subdir](host/) for setup details
-
+## Setup procedure
+1. On the host itself, provide the basic network infrastructure. See [host subdir](host/).
+1. For DNS and DHCP, provide a container as described in [dnsmasq subdir](dnsmasq/).
+1. For AFP file services and EtherTalk routing, provide a container as described in [netatalk subdir](netatalk/).
+1. For Ethernet-over-UDP for SheepShaver/Basilisk II, provide a container as described in [ethoudp_iface subdir](ethoudp_iface/).
+1. For LocalTalk-over-UDP, provide a container as described in [ltoudp_router subdir](ltoudp_router/).
+1. For IP routing, provide a container as described in [vmacsrv-ip-router subdir](vmacsrv-ip-router/).

@@ -4,7 +4,7 @@
 
 For DNS and DHCP [dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html) is used.
 
-To avoid any interference with an existing LAN setup, DNS and especially DHCP is only active on `vintagelan` and `ethoutp`.
+To avoid any interference with an existing LAN setup, DNS and especially DHCP is only active on `vintagelan` and `ethoudp`.
 
 ## Building the image
 For example:
