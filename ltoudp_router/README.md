@@ -14,36 +14,14 @@ docker build -t vmacsrv-ltoudp-rt:latest .
 ```
 ## Configuration
 
-usage: ltoudp_router.py [-h] [--tap-iface VALUE] [--ltoudp-zone VALUE] [--ltoudp-net VALUE]
+You might change the container's defaults by environment variables when starting the container: 
 
-LToUDP router configuration
+| Env variable | Default |
+|--------------|---------|
+| `TAP_IFACE` | ltoudp_tap |
+| `LTOUDP_ZONE` | LToUDP zone |
+| `LTOUDP_NET` | 62 |
 
-options:
-  -h, --help           show this help message and exit
-  --tap-iface VALUE    LToUDP TAP interface name [env: TAP_IFACE] (default: 'ltoudp_tap')
-  --ltoudp-zone VALUE  LToUDP network zone name [env: LTOUDP_ZONE] (default: 'LToUDP zone')
-  --ltoudp-net VALUE   LToUDP seed network number [env: LTOUDP_NET] (default: 62)
-
-
-EtherTalk routing is configured in [config/atalkd.conf](config/atalkd.conf). File services are configured in [config/afp.conf](config/afp.conf).
-The docker script creates a user with:
-- Login: afpuser
-- Password: afpuser
-- UID/GID: 9999/9999
-
-You can change these defaults by setting environment variables when starting the container:
-- `AFP_USER`
-- `AFP_PASS`
-- `AFP_UID`
-- `AFP_GROUP`
-- `AFP_GID`
-
-XXXX
-
-  -h, --help           show this help message and exit
-  --tap-iface VALUE    LToUDP TAP interface name [env: TAP_IFACE] (default: 'ltoudp_tap')
-  --ltoudp-zone VALUE  LToUDP network zone name [env: LTOUDP_ZONE] (default: 'LToUDP zone')
-  --ltoudp-net VALUE   LToUDP seed network number [env: LTOUDP_NET] (default: 62)
 
 ## Running the image
 For example:

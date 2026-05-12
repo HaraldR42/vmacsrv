@@ -22,11 +22,14 @@ The docker script creates a user with:
 - UID/GID: 9999/9999
 
 You might change these defaults by environment variables when starting the container: 
-- `AFP_USER`
-- `AFP_PASS`
-- `AFP_UID`
-- `AFP_GROUP`
-- `AFP_GID`
+
+| Env variable | Default |
+|--------------|---------|
+| `AFP_USER` | afpuser |
+| `AFP_PASS` | afpuser |
+| `AFP_UID` | 9999 |
+| `AFP_GROUP` | afpgroup |
+| `AFP_GID` | 9999 |
 
 ## Running the image
 For example:

@@ -14,14 +14,14 @@ docker build -t vmacsrv-ip-router .
 ```
 ## Configuration
 
-XXX
+The container uses the (symbolic) interface names from this setup.
+You might change the defaults by environment variables when starting the container: 
 
-You might change these defaults by environment variables when starting the container: 
-LAN_IF=${LAN_IF:-lan}
-VINTAGELAN_IF=${VINTAGELAN_IF:-vintagehost_if}
-ETHOUDP_IF=${ETHOUDP_IF:-ethoudp_tap}
-
-XXX
+| Env variable | Default |
+|--------------|---------|
+| `LAN_IF` | lan |
+| `VINTAGELAN_IF` | vintagehost_if |
+| `ETHOUDP_IF` | ethoudp_tap |
 
 ## Running the image
 For example:
