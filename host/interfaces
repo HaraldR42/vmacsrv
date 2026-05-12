@@ -24,7 +24,7 @@ iface lan inet static
     netmask 255.255.255.0
     gateway 172.29.0.1
     dns-domain macgeek.home
-    dns-nameservers 127.0.0.1
+    dns-nameservers 172.29.0.1
 
 #-----------------------------------------------------------------------------
 
