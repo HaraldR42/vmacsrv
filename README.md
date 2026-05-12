@@ -58,10 +58,57 @@ Using Docker here is debatable, especially because the containers require many p
 It's just my personal preference for keeping dependencies separate between applications.
 So YMMV.
 
-## Setup procedure
+## vmacsrv setup procedure
 1. On the host itself, provide the basic network infrastructure. See [host subdir](host/).
 1. For DNS and DHCP, provide a container as described in [dnsmasq subdir](dnsmasq/).
 1. For AFP file services and EtherTalk routing, provide a container as described in [netatalk subdir](netatalk/).
 1. For Ethernet-over-UDP for SheepShaver/Basilisk II, provide a container as described in [ethoudp_iface subdir](ethoudp_iface/).
 1. For LocalTalk-over-UDP, provide a container as described in [ltoudp_router subdir](ltoudp_router/).
 1. For IP routing, provide a container as described in [vmacsrv-ip-router subdir](vmacsrv-ip-router/).
+
+## Emulator setup
+
+### Basilisk II
+
+- Run on a machine placed in `lan`
+- In your prefs file:
+    - Set `udptunnel true`
+    - Set `udpport 6066`
+    - Remove all `ether` options
+
+### Mini vMac
+
+- Run on a machine placed in `lan`
+- Machine maybe needs to be a Mac, but I'm not sure
+- Compile time options:
+    - Use Mini vMac branch 37: `-br 37`
+    - Enable LocalTalk support `-lt`
+
+---
+---
+# Screenshots
+
+## Basilisk II running 7.5.5
+
+![Basilisk II screenshot](basiliskII-7_5_5.png)
+
+What's in the screenshot:
+- Machine runs System 7.5.5
+- All three AppleTalk zones visible
+- Machine is placed in "EthOverUDP zone"
+- TCP/IP configured via DHCP
+- File server visible in chooser
+- Two volumes mounted via AFP over TCP/IP
+- Helios LanTest performance results on file server
+- Working IP routing to internet
+
+
+## Mini vMac running 6.0.7
+
+![Mini vMac screenshot](miniVMac-6_0_7.png)
+
+What's in the screenshot:
+- Machine runs System 6.0.7
+- All three AppleTalk zones visible
+- File server visible in chooser
+- Two volumes mounted (via AFP over LocalTalk)
