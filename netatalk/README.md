@@ -50,3 +50,9 @@ docker run  --detach \
             --dns 172.29.60.1 \
             vmacsrv-netatalk:latest
 ```
+**Do not forget to make the volume directories writeable by AFP_UID/AFP_UID!**
+
+For example:
+```
+chown -R 9999:9999 ./volumes
+```
