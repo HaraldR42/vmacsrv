@@ -25,6 +25,7 @@ docker run  --detach \
             --cap-add NET_RAW \
             --name vmacsrv-ethoudp-if \
             --hostname vmacsrv-ethoudp-if \
+            --device /dev/net/tun \
             --env TZ=Europe/Berlin \
 			--env TAP_IFACE=ethoudp_tap \
 			--env BCAST_IFACE=lan \

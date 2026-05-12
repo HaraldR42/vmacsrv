@@ -33,6 +33,7 @@ docker run  --detach \
             --cap-add NET_RAW \
             --name vmacsrv-ltoudp-rt \
             --hostname vmacsrv-ltoudp-rt \
+            --device /dev/net/tun \
             --env TZ=Europe/Berlin \
             vmacsrv-ltoudp-rt:latest
 ```
