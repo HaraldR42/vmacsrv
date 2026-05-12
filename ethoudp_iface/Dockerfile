@@ -6,7 +6,5 @@ WORKDIR /app
 
 RUN git clone --branch main https://github.com/HaraldR42/ethoudp_iface.git .
 
-COPY src/* ./
-
 ENTRYPOINT ["python3", "-u", "ethoudp_iface.py"]
 
