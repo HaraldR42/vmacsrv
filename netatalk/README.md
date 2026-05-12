@@ -44,5 +44,6 @@ docker run  --detach \
             --volume ./dbase:/var/local/netatalk \
             --volume ./volumes/data:/mnt/data \
             --volume ./volumes/software:/mnt/software \
+            --dns 172.29.60.1 \
             vmacsrv-netatalk:latest
 ```
